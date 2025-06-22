@@ -51,7 +51,7 @@
     }
 .image {
     display: flex;
-    width: 50%;
+    width: 400px;
     min-width: 400px;
     height: auto;
     border: 6px solid var(--clr-primary);
