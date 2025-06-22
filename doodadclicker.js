@@ -6,12 +6,12 @@ function clickBtn() {
     document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
 }
 function buybuilding() {
-    if(doodad > 100 * 1.2 ^ (clickpower)||doodad == 100 * 1.2 ^ (clickpower)){
-        doodad -= 100 * 1.2 ^ (clickpower);
+    if(doodad > 100 * 1.2 ^ (building)||doodad == 100 * 1.2 ^ (building)){
+        doodad -= 100 * 1.2 ^ (building);
         building += 1;
         document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
         document.getElementById("buildingCounter").innerHTML = "building collected = " + building;
-        document.getElementById("buildingbutton").innerHTML = "foodadbuilding price = " + 100 * 1.2 ^ (clickpower);
+        document.getElementById("buildingbutton").innerHTML = "doodadbuilding price = " + 100 * 1.2 ^ (building);
     }
 }
 function buyclickpower() {
