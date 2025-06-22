@@ -11,7 +11,7 @@
         <button onClick="clickBtn()">click to make a doodad</button> <br>
     </div>
     <div class="button">
-        <button onClick="buy()">click to buy a doodadbuilding</button> <br>
+        <button onClick="buybuilding()">click to buy a doodadbuilding</button> <br>
     </div>
     <div class="button">
         <a href="index.html"><button>go back</button></a>
@@ -20,12 +20,12 @@
     <p id="buildingCounter">amount collected = 0</p>
     <script>
         var doodad = 0;
-        var building = 1;
+        var building = 0;
         function clickBtn() {
             doodad += 1;
             document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
         }
-        function buy() {
+        function buybuilding() {
             if(doodad => 100){
                 doodad -= 100;
                 building += 1;
