@@ -4,6 +4,7 @@
     --clr-slate: #5225468d;
     --clr-primary: #88304E;
     --clr-link: #7638b0;
+    --int-width: 350; 
 }
 
 
@@ -25,7 +26,7 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    min-width: 400px;
+    min-width: var(--int-width);
     border: solid var(--clr-primary);
     border-radius: 10px;
     margin: 4px;
@@ -37,13 +38,13 @@
     justify-content: center;
     font-size: 25px;
     text-shadow: #88304E;
+    min-width: var(--int-width) - (6 * 2);
     border: 6px solid var(--clr-primary);
 }
 .text {
     display: flex;
     text-align: left;
-    width: 50%;
-    min-width: 400px;
+    min-width: var(--int-width) - (6 * 2);
     height: auto;
     border: 6px solid var(--clr-primary);
     word-wrap: break-word;
@@ -51,8 +52,7 @@
     }
 .image {
     display: flex;
-    width: 400px;
-    min-width: 400px;
+    min-width: var(--int-width);
     height: auto;
     border: 6px solid var(--clr-primary);
 }

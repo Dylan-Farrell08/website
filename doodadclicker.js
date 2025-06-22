@@ -1,6 +1,7 @@
 var doodad = 0;
 var building = 0;
 var clickpower = 1;
+var pirates = 0;
 function clickBtn() {
     doodad += clickpower;
     document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
@@ -23,9 +24,18 @@ function buyclickpower() {
         document.getElementById("clickbutton").innerHTML = "clickstrength price = " + (50 * 1.1 ^ (clickpower));
     }
 }
-
+function buypirates() {
+    if(doodad > (400 * 1.1 ^ (pirates))||doodad == (400 * 1.1 ^ (pirates))){
+        doodad -= (400 * 1.1 ^ (pirates));
+        pirates += 1;
+        document.getElementById("doodadCounter").innerHTML = "fleet size = " + doodad;
+        document.getElementById("pirateCounter").innerHTML = "pirates sailing = " + pirates;
+        document.getElementById("piratesbutton").innerHTML = "ship price = " + (400 * 1.1 ^ (pirates));
+    }
+}
 setInterval(() => {
 doodad += building
+doodad += pirates * 6
 document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
 document.getElementById("buildingCounter").innerHTML = "building collected = " + building;
 }, 1000);
