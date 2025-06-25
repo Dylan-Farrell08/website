@@ -11,8 +11,8 @@ function buybuilding() {
         doodad -= 100 * 1.2 ^ (building);
         building += 1;
         document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-        document.getElementById("buildingbutton").innerHTML = "buildings collected = " + building;
-        document.getElementById("buildingCounter").innerHTML = "doodadbuilding price = " + ((100 * 1.2) ^ (building));
+        document.getElementById("buildingbutton").innerHTML = "building price = " + ((100 * 1.2) ^ (building));
+        document.getElementById("buildingCounter").innerHTML = "building collected = " + building;
     }
 }
 function buyclickpower() {
