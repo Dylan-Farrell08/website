@@ -1,14 +1,22 @@
 var doodad = 0;
+var doodad = parseInt(localStorage.getItem("doodads")) || 1;
 var columns = {
-    building : 1,
-    clickpower : 1,
-    pirates : 1
+    building : parseInt(localStorage.getItem("building")) || 1,
+    clickpower : parseInt(localStorage.getItem("clickpower")) || 1,
+    pirates : parseInt(localStorage.getItem("pirates"))  || 1
 };
 var prices = {
     building : 100,
     clickpower : 50,
     pirates : 400
 };
+
+function onReady(){
+    document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
+    document.getElementById("buildingCounter").innerHTML = "buildings owned = " + columns["building"];
+    document.getElementById("clickpowerCounter").innerHTML = "click power = " + columns["clickpower"];
+    document.getElementById("piratesCounter").innerHTML = "ship sailing = " + columns["pirates"];
+}
 
 function clickBtn() {
     doodad += columns["clickpower"];
@@ -51,9 +59,13 @@ function update_count(type, collected_amount, type_price){
 }
 
 setInterval(() => {
-console.log(columns["building"])
+console.log(doodad)
 doodad += columns["building"] - 1
 doodad += (columns["pirates"] - 1) * 6
+localStorage.setItem("doodads", doodad)
+localStorage.setItem("building", columns["building"])
+localStorage.setItem("clickpower", columns["clickpower"])
+localStorage.setItem("pirates", columns["pirates"])
+console.log(localStorage)
 document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-document.getElementById("buildingCounter").innerHTML = "buildings collected = " + columns["building"];
 }, 1000);
