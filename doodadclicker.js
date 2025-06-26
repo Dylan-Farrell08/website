@@ -1,8 +1,8 @@
 var doodad = 0;
 var columns = {
-    building : 0,
+    building : 1,
     clickpower : 1,
-    pirates : 0
+    pirates : 1
 };
 var prices = {
     building : 100,
@@ -52,8 +52,8 @@ function update_count(type, collected_amount, type_price){
 
 setInterval(() => {
 console.log(columns["building"])
-doodad += columns["building"]
-doodad += columns["pirates"] * 6
+doodad += columns["building"] - 1
+doodad += (columns["pirates"] - 1) * 6
 document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
 document.getElementById("buildingCounter").innerHTML = "buildings collected = " + columns["building"];
 }, 1000);
