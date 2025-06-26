@@ -13,9 +13,9 @@ var prices = {
 
 function onReady(){
     document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-    document.getElementById("buildingCounter").innerHTML = "buildings owned = " + columns["building"];
-    document.getElementById("clickpowerCounter").innerHTML = "click power = " + columns["clickpower"];
-    document.getElementById("piratesCounter").innerHTML = "ship sailing = " + columns["pirates"];
+    document.getElementById("buildingCounter").innerHTML = "buildings owned = " + columns["building"] - 1;
+    document.getElementById("clickpowerCounter").innerHTML = "click power = " + columns["clickpower"] - 1;
+    document.getElementById("piratesCounter").innerHTML = "ship sailing = " + columns["pirates"] - 1;
 }
 
 function clickBtn() {
