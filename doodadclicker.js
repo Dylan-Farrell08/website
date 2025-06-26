@@ -54,7 +54,7 @@ function pricecalc(type){
 function update_count(type, collected_amount, type_price){
     console.log(type)
     document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-    document.getElementById(type+"Counter").innerHTML = collected_amount + columns[type];
+    document.getElementById(type+"Counter").innerHTML = collected_amount + (columns[type] - 1);
     document.getElementById(type+"button").innerHTML = type_price + pricecalc(type);    
 }
 
