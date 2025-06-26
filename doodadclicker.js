@@ -1,41 +1,59 @@
 var doodad = 0;
-var building = 0;
-var clickpower = 1;
-var pirates = 0;
+var columns = {
+    building : 0,
+    clickpower : 1,
+    pirates : 0
+};
+var prices = {
+    building : 100,
+    clickpower : 50,
+    pirates : 400
+};
+
 function clickBtn() {
-    doodad += clickpower;
+    doodad += columns["clickpower"];
     document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
 }
-function buybuilding() {
-    if(doodad > (100 * 1.2 ^ (building))||doodad == (100 * 1.2 ^ (building))){
-        doodad -= 100 * 1.2 ^ (building);
-        building += 1;
-        document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-        document.getElementById("buildingbutton").innerHTML = "building price = " + ((100 * 1.2) ^ (building));
-        document.getElementById("buildingCounter").innerHTML = "building collected = " + building;
+
+function buy(type, own_label, price_label) {
+    var price = pricecalc(type)
+    if(doodad > price||doodad == price){
+        doodad -= price;
+        columns[type] += 1;
+        update_count(type, own_label, price_label)
     }
+}
+
+function buybuilding() {
+    buy("building", "buildings owned =", "building price = ")
 }
 function buyclickpower() {
-    if(doodad > (50 * (1.1 ^ clickpower))||doodad == (50 * (1.1 ^ clickpower))){
-        doodad -= (50 * (1.1 ^ clickpower));
-        clickpower += 1;
-        document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-        document.getElementById("clickpowerCounter").innerHTML = "clickpower collected = " + clickpower;
-        document.getElementById("clickbutton").innerHTML = "clickstrength price = " + (50 * (1.1 ^ clickpower));
-    }
+    buy("clickpower", "click power =", "click price = ")
 }
 function buypirates() {
-    if(doodad > ((400 * 1.1) ^ (pirates))||doodad == ((400 * 1.1) ^ (pirates))){
-        doodad -= ((400 * 1.1) ^ (pirates));
-        pirates += 1;
-        document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-        document.getElementById("pirateCounter").innerHTML = "pirates sailing = " + pirates;
-        document.getElementById("piratesbutton").innerHTML = "ship price = " + ((400 * 1.1) ^ (pirates));
-    }
+    buy("pirates", "ship sailing =", "Ship price = ")
 }
+
+function pricecalc(type){
+    var base_cost = prices[type]
+    var count = columns[type]
+    var return_price = (base_cost * Math.pow(1.1, count - 1))
+    console.log(return_price)
+    return(Math.round(return_price))
+
+}
+
+function update_count(type, collected_amount, type_price){
+    console.log(type)
+    document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
+    document.getElementById(type+"Counter").innerHTML = collected_amount + columns[type];
+    document.getElementById(type+"button").innerHTML = type_price + pricecalc(type);    
+}
+
 setInterval(() => {
-doodad += building
-doodad += pirates * 6
+console.log(columns["building"])
+doodad += columns["building"]
+doodad += columns["pirates"] * 6
 document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
-document.getElementById("buildingCounter").innerHTML = "buildings collected = " + building;
+document.getElementById("buildingCounter").innerHTML = "buildings collected = " + columns["building"];
 }, 1000);
