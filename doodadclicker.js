@@ -3,12 +3,14 @@ var doodad = parseInt(localStorage.getItem("doodads")) || 1;
 var columns = {
     building : parseInt(localStorage.getItem("building")) || 1,
     clickpower : parseInt(localStorage.getItem("clickpower")) || 1,
-    pirates : parseInt(localStorage.getItem("pirates"))  || 1
+    pirates : parseInt(localStorage.getItem("pirates"))  || 1,
+    minions : parseInt(localStorage.getItem("minions"))  || 1
 };
 var prices = {
     building : 100,
     clickpower : 50,
-    pirates : 400
+    pirates : 400,
+    minions : 10
 };
 
 function onReady(){
@@ -16,6 +18,7 @@ function onReady(){
     document.getElementById("buildingCounter").innerHTML = "buildings owned = " + (columns["building"] - 1);
     document.getElementById("clickpowerCounter").innerHTML = "click power = " + (columns["clickpower"] - 1);
     document.getElementById("piratesCounter").innerHTML = "ship sailing = " + (columns["pirates"] - 1);
+    document.getElementById("minionsCounter").innerHTML = "minions scheming = " + (columns["minions"] - 1);
 }
 
 function clickBtn() {
@@ -41,7 +44,9 @@ function buyclickpower() {
 function buypirates() {
     buy("pirates", "ship sailing =", "Ship price = ")
 }
-
+function buyminions() {
+    buy("minions", "minions scheming =", "minion price = ")
+}
 function pricecalc(type){
     var base_cost = prices[type]
     var count = columns[type]
@@ -62,10 +67,12 @@ setInterval(() => {
 console.log(doodad)
 doodad += columns["building"] - 1
 doodad += (columns["pirates"] - 1) * 6
+doodad += (columns["pirates"] - 1) * 2
 localStorage.setItem("doodads", doodad)
 localStorage.setItem("building", columns["building"])
 localStorage.setItem("clickpower", columns["clickpower"])
 localStorage.setItem("pirates", columns["pirates"])
+localStorage.setItem("minions", columns["minions"])
 console.log(localStorage)
 document.getElementById("doodadCounter").innerHTML = "amount collected = " + doodad;
 }, 1000);
