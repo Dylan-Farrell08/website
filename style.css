@@ -26,8 +26,6 @@
     display: grid;
     align-items: center;
     justify-content: center;
-    width: 70%;
-    min-width: var(--int-width);
     border: solid var(--clr-primary);
     border-radius: 10px;
     margin: 4px;
